@@ -10,6 +10,7 @@ services:
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
     volumes:
       - ./application:/var/www/html
+    user: "1000"
     networks:
       - appnet
 
@@ -33,6 +34,8 @@ services:
       POSTGRES_DB: laravel
     volumes:
       - dbdata:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
     networks:
       - appnet
 
@@ -40,14 +43,6 @@ services:
     image: redis:alpine
     volumes:
       - cachedata:/data
-    networks:
-      - appnet
-
-  node:
-    image: node:latest
-    volumes:
-      - .:/var/www/html
-    user: node
     networks:
       - appnet
 

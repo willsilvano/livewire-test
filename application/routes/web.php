@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::layout('layouts.auth')->group(function () {
+    Route::livewire('/register', 'auth.register')->name('auth.register');
+    Route::livewire('/login', 'auth.login')->name('auth.login');
+    Route::livewire('/recover', 'auth.recover')->name('auth.recover');
+});
+
+Route::as('admin.')->prefix('admin')->middleware('auth')->group(function () {
+    Route::livewire('/', 'admin.home')->name('home');
 });
