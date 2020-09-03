@@ -21,4 +21,6 @@ Route::layout('layouts.auth')->group(function () {
 
 Route::as('admin.')->prefix('admin')->middleware('auth')->group(function () {
     Route::livewire('/', 'admin.home')->name('home');
+    Route::livewire('persons', 'admin.persons')->name('persons');
+    Route::livewire('companies', 'admin.companies')->name('companies');
 });
