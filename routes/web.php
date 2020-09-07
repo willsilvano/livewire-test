@@ -24,6 +24,7 @@ Route::name('auth.')->prefix('auth')->namespace('Auth')->group(function () {
 
 Route::name('admin.')->prefix('admin')->namespace('Admin')->middleware('auth')->group(function () {
     Route::get('', 'HomeController@index')->name('home');
+    Route::get('profile', 'ProfileController@index')->name('profile');
 
     Route::name('persons')->prefix('persons')->namespace('Persons')->group(function () {
         Route::get('', 'ListController@index');
