@@ -9,7 +9,7 @@ services:
       - PHP_OPCACHE_REVALIDATE_FREQUENCY=0
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
     volumes:
-      - ./application:/var/www/html
+      - .:/var/www/html
     user: "1000"
     networks:
       - appnet
@@ -19,7 +19,7 @@ services:
       context: docker/nginx
       dockerfile: Dockerfile
     volumes:
-      - ./application:/var/www/html
+      - .:/var/www/html
     ports:
       - 80:80
     networks:
@@ -43,6 +43,16 @@ services:
     image: redis:alpine
     volumes:
       - cachedata:/data
+    networks:
+      - appnet
+
+  node:
+    build:
+      context: docker/node
+      dockerfile: Dockerfile
+    user: node
+    volumes:
+      - .:/var/www/html
     networks:
       - appnet
 

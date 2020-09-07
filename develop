@@ -25,6 +25,24 @@ if [ $# -gt 0 ]; then
         docker-compose exec \
             app \
             ./vendor/bin/phpunit "$@"
+
+    elif [ "$1" == "npm" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            npm "$@"
+
+    elif [ "$1" == "yarn" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            yarn "$@"
+
+    elif [ "$1" == "gulp" ]; then
+        shift 1
+        docker-compose run --rm \
+            node \
+            ./node_modules/.bin/gulp "$@"
     else
         docker-compose "$@"
     fi
