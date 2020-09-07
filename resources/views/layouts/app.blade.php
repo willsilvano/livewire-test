@@ -21,7 +21,7 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        <livewire:admin.menu />
+        <livewire:admin.menu current-route="{{ request()->route()->getName() }}" />
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">

@@ -8,14 +8,14 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Renda P.</sup></div>
+            <div class="sidebar-brand-text mx-3">Laravel</sup></div>
         </a>
 
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
 
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item  {{ request()->routeIs('admin.home') ? 'active' : '' }}">
+        <li class="nav-item  {{ $this->isCurrentRoute('admin.home') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('admin.home') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
@@ -25,19 +25,19 @@
         <hr class="sidebar-divider">
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item {{ request()->routeIs('admin.persons*') ? 'active' : '' }}">
-            <a class="nav-link {{ request()->routeIs('admin.persons*') ? '' : 'collapsed' }}" href="#"
+        <li class="nav-item {{ $this->isCurrentRoute('admin.persons*') ? 'active' : '' }}">
+            <a class="nav-link {{ $this->isCurrentRoute('admin.persons*') ? '' : 'collapsed' }}" href="#"
                 data-toggle="collapse" data-target="#collapseTwo"
-                aria-expanded="{{ request()->routeIs('admin.persons*') ? 'true' : 'false' }}"
+                aria-expanded="{{ $this->isCurrentRoute('admin.persons*') ? 'true' : 'false' }}"
                 aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>CRUD</span>
             </a>
             <div id="collapseTwo"
-                class="collapse {{ !$isMenuCollapsed && request()->routeIs('admin.persons') ? 'show' : '' }}"
+                class="collapse {{ !$isMenuCollapsed && $this->isCurrentRoute('admin.persons') ? 'show' : '' }}"
                 aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item {{ request()->routeIs('admin.persons') ? 'active' : '' }}"
+                    <a class="collapse-item {{ $this->isCurrentRoute('admin.persons') ? 'active' : '' }}"
                         href="{{ route('admin.persons') }}">Persons</a>
                 </div>
             </div>
