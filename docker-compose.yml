@@ -8,9 +8,10 @@ services:
     environment: 
       - PHP_OPCACHE_REVALIDATE_FREQUENCY=0
       - PHP_OPCACHE_VALIDATE_TIMESTAMPS=1
+      - XDG_CONFIG_HOME=/var/www/html/.tinker
     volumes:
       - .:/var/www/html
-    user: "1000"
+    user: 1000:1000
     networks:
       - appnet
 
